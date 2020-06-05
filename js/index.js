@@ -1,10 +1,5 @@
 $(document).ready(function () {
-    var $grid = $(".container").isotope({
-        itemSelector: ".item",
-        conlumnwidth: ".item",
-        percentPosition: true,
-        transitionDuration: "0.5s"
-    });
+
 
     $(".filter a").on("click", function (e) {
         e.preventDefault();
@@ -32,6 +27,13 @@ $(document).ready(function () {
             list += "</a>";
             list += "</div>";
             list += "</div>";
+        });
+
+        var $grid = $(".container").isotope({
+            itemSelector: ".item",
+            conlumnwidth: ".item",
+            percentPosition: true,
+            transitionDuration: "0.5s"
         });
 
         $('.container').append(list);
