@@ -17,6 +17,33 @@ body{
     padding:20px;
     box-sizing: border-box;
 }
+
+form{
+    margin-bottom:10px;
+    display: flow-root;
+}
+form #addTxt,form #bth{
+    float:left;
+    display: block;
+}
+form #addTxt{
+    margin-left:10px;
+    padding:5px 10px;
+    font-size:1rem;
+}
+
+form #btn{
+    width:70px;
+    height:32px;
+    margin-left:10px;
+    background-color:#444;
+    color:#FFF;
+    border:none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
 .filter{
     display: flow-root;
 }
@@ -60,27 +87,51 @@ body{
     background-size: cover !important;
 }
 
-/* .item1{
+.instagram-box a {
+    display: block;
+    width: 100%;
+    background-size: cover !important;
+    position: relative;
+    text-decoration: none;
     height:200px;
 }
-.item2{
-    height:160px;
+
+.instagram-box a::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    transition: ease-in-out all .3s;
 }
-.item3{
-    height:220px;
+
+.instagram-box a:hover::before {
+    opacity: .7;
+    transition: ease-in-out all .3s;
 }
-.item4{
-    height:300px;
+
+.instagram-box>a>p {
+    box-sizing: border-box;
+    padding: 20px 40px;
+    width: 100%;
+    color: white;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    z-index: 11;
+    transition: ease-in-out all .3s;
 }
-.item5{
-    height:110px;
+
+.instagram-box a:hover p {
+    opacity: 1;
+    transition: ease-in-out all .3s;
 }
-.item6{
-    height:90px;
-}
-.item7{
-    height:200px;
-} */
 
 
 @media screen and (min-width:1400px) and (max-width:1599px){

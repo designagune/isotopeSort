@@ -1,14 +1,4 @@
 $(document).ready(function () {
-
-
-    $(".filter a").on("click", function (e) {
-        e.preventDefault();
-        var sort = $(this).attr("href");
-        $grid.isotope({ filter: sort });
-    })
-});
-
-$(document).ready(function () {
     var token = "IGQVJWakFXNFUtTVMyNHQwYVdlS05hb0NwbnpmMk5BMGY2TjhPckNQRFpCajFJc2oxQjM4MVRaRTUtZAHhWTVhQNU8tWXhxYzFZAa0czaktrY1BBRzFBQUYxNkUzUjJaZAnEySUo0dDRR";
 
     $.ajax({
@@ -38,7 +28,39 @@ $(document).ready(function () {
         });
 
         $('.container').append(list);
+
+        /* range random value */
+        function random(min, max) {
+            var randVal = Math.floor(Math.random() * (max - min + 1)) + min;
+            console.log(randVal);
+            return randVal;
+        }
+
+        $(".instagram-box").map(function (i, v) {
+            $(v).find("a").css("height", random(150, 350) + "px");
+        });
+
     }).fail(function () {
         console.log("fail");
+    });
+
+    /* create category */
+    $("#btn").click(function (e) {
+        e.preventDefault();
+        var txtVal = $(this).siblings("#addTxt").val();
+        var catagoryBtn = $("<li><a class='category' href='#' data-category='." + txtVal + "'>#" + txtVal + "</a></li>");
+        $(".filter").append(catagoryBtn);
+    });
+
+    /* filtering */
+    $(".filter").on("click", "li .category", function (e) {
+        e.preventDefault();
+        var dataCategory = $(this).attr("data-category");
+        $grid.isotope({
+            filter: function () {
+                var hashTag = $(this).find("a").text();
+                return hashTag.match(dataCategory);
+            }
+        });
     });
 });
