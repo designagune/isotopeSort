@@ -11,6 +11,18 @@ $(document).ready(function () {
                 percentPosition: true,
                 transitionDuration: "0.5s"
             });
+
+            /* filtering */
+            $(".filter").on("click", "li .category", function (e) {
+                e.preventDefault();
+                var dataCategory = $(this).attr("data-category");
+                $grid.isotope({
+                    filter: function () {
+                        var hashTag = $(this).find("a").text();
+                        return hashTag.match(dataCategory);
+                    }
+                });
+            });
         }
     }).done(function (data) {
         console.log(data);
@@ -32,7 +44,6 @@ $(document).ready(function () {
         /* range random value */
         function random(min, max) {
             var randVal = Math.floor(Math.random() * (max - min + 1)) + min;
-            console.log(randVal);
             return randVal;
         }
 
@@ -50,17 +61,5 @@ $(document).ready(function () {
         var txtVal = $(this).siblings("#addTxt").val();
         var catagoryBtn = $("<li><a class='category' href='#' data-category='." + txtVal + "'>#" + txtVal + "</a></li>");
         $(".filter").append(catagoryBtn);
-    });
-
-    /* filtering */
-    $(".filter").on("click", "li .category", function (e) {
-        e.preventDefault();
-        var dataCategory = $(this).attr("data-category");
-        $grid.isotope({
-            filter: function () {
-                var hashTag = $(this).find("a").text();
-                return hashTag.match(dataCategory);
-            }
-        });
     });
 });
